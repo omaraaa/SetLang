@@ -1,0 +1,6 @@
+block = {"{"  ~ block_body? ~ "}"}
+block_body = _{decl*}
+decl = {"[" ~ typeID ~ "]" ~ "=" ~ block}
+Id = @{('a'..'z')+}
+typeID = @{Id ~ ("." ~ typeID)?}
+WHITESPACE = _{(" " | "\n")}
