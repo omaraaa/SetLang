@@ -249,4 +249,25 @@ pub add = fn(this: This, other: This) This {
     };
 } 
 
+
+let std = import("std");
+
+[std.main] = proc(){
+    std.debug.print("Hello World!\n", #);
+
+    var a : i32 = 0;
+    var b : i32 = 0;
+
+    a+=1;
+    b=a;
+
+    if a == b {
+        b *= 2;
+    }
+
+    std.debug.print(f"a:{a}, b:{b}, c: {a+b}\n", #);
+}
+
+
+
 ```

@@ -13,6 +13,21 @@ mod tests {
 
     #[test]
     fn test_parser() {
-        assert!(MyParser::parse(Rule::block, "{[std.dev]={}}").is_ok())
+        let parsed = MyParser::parse(
+            Rule::block_body,
+            "[std.dev]={}[hello]={}let test = \"jel;lo\";",
+        );
+        assert!(parsed.is_ok());
+
+        let pairs = parsed.unwrap();
+
+        println!("parsed: {pairs}");
+        for pair in pairs {
+            let tokens: Vec<_> = pair.tokens().collect();
+
+            for token in tokens {
+                println!("token: {token:?}");
+            }
+        }
     }
 }
